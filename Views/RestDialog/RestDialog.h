@@ -35,7 +35,7 @@ public:
         returnButton(new QPushButton(QString("Return to work"))),
         skipButton(new QPushButton(QString("Skip")))
     {
-        this->setAttribute(Qt::WA_TranslucentBackground);
+        //this->setAttribute(Qt::WA_TranslucentBackground);
         this->setWindowState(Qt::WindowFullScreen);
         this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint);
 

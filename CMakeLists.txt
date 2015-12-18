@@ -11,7 +11,7 @@ find_package(Qt5Widgets)
 #add_executable(myapp ${SRC_LIST} ${RESOURCES)
 #qt5_use_modules(myapp Quick Core Network)
 
-set(SOURCE_FILES main.cpp Windows/WelcomeWindow/WelcomeWindow.cpp Windows/WelcomeWindow/WelcomeWindow.h Controller.cpp Controller.h Models/Settings.cpp Models/Settings.h Windows/RestDialog/RestDialog.cpp Windows/RestDialog/RestDialog.h)
+set(SOURCE_FILES main.cpp Views/WelcomeWindow/WelcomeWindow.cpp Views/WelcomeWindow/WelcomeWindow.h Controller.cpp Controller.h Models/Settings.cpp Models/Settings.h Views/RestDialog/RestDialog.cpp Views/RestDialog/RestDialog.h Views/Tray/TrayIcon.cpp Views/Tray/TrayIcon.h Views/Tray/TrayMenu.cpp Views/Tray/TrayMenu.h)
 add_executable(mEyeSaver ${SOURCE_FILES})
 
 target_include_directories(mEyeSaver PUBLIC /usr/include/qt5)

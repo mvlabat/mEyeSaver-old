@@ -7,8 +7,8 @@
 
 #include <QtCore/qtimer.h>
 
-#include "Windows/WelcomeWindow/WelcomeWindow.h"
-#include "Windows/RestDialog/RestDialog.h"
+#include "Views/WelcomeWindow/WelcomeWindow.h"
+#include "Views/RestDialog/RestDialog.h"
 
 class Controller : public QObject
 {
