@@ -65,7 +65,12 @@ void Controller::initResting()
 
 void Controller::postponeResting()
 {
-    workTimer->start(postponeTime);
+    if (longResting || workTimer->remainingTime() <= shortWorkingTime) {
+        workTimer->start(postponeTime);
+    }
+    else {
+        restTimer->start(postponeTime);
+    }
     hideRestDialog();
 }
 
