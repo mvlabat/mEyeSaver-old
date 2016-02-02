@@ -9,12 +9,14 @@
 
 #include "Views/WelcomeWindow/WelcomeWindow.h"
 #include "Views/RestDialog/RestDialog.h"
+#include "Views/Tray/TrayIcon.h"
 
 class Controller : public QObject
 {
     Q_OBJECT
 
 private:
+    TrayIcon tray;
     WelcomeWindow* welcomeWindow;
     RestDialog* restDialog;
     QTimer* workTimer;

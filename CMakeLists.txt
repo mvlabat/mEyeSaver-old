@@ -13,8 +13,8 @@ find_package(Qt5Widgets)
 
 set(SOURCE_FILES main.cpp Views/WelcomeWindow/WelcomeWindow.cpp Views/WelcomeWindow/WelcomeWindow.h Controller.cpp Controller.h Models/Settings.cpp Models/Settings.h Views/RestDialog/RestDialog.cpp Views/RestDialog/RestDialog.h Views/Tray/TrayIcon.cpp Views/Tray/TrayIcon.h Views/Tray/TrayMenu.cpp Views/Tray/TrayMenu.h)
 set(RESOURCES Resources/resources.qrc)
-qt5_add_resources(QtApp_RCC_SRCS ${RESOURCES})
-add_executable(mEyeSaver ${SOURCE_FILES})
+qt5_add_resources(RESOURCES_RCC ${RESOURCES})
+add_executable(mEyeSaver ${SOURCE_FILES} ${RESOURCES_RCC})
 
 target_include_directories(mEyeSaver PUBLIC /usr/include/qt5)
 target_link_libraries(mEyeSaver Qt5::Widgets)
