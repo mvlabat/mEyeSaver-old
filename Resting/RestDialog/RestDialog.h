@@ -54,6 +54,9 @@ public:
 
     void setRestingTime(int secs);
 
+protected:
+    QString getTimerString(qint64 secs);
+
 public slots:
     void updateTimer();
     void enableReturn();

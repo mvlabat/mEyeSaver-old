@@ -34,8 +34,8 @@ public:
 
         action = new QWidgetAction(0);
         testw = new QWidget();
-        //testp = new QPushButton(QString("Test"), testw);
-        testl = new QLabel(QString("Test"), testw);
+        //testp = new QPushButton(QString("RestingTests"), testw);
+        testl = new QLabel(QString("RestingTests"), testw);
 
         action->setDefaultWidget(testl);
 
