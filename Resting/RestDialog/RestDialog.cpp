@@ -28,5 +28,5 @@ QString RestDialog::getTimerString(qint64 secs)
 void RestDialog::updateTimer()
 {
     qint64 secs = QDateTime::currentDateTime().msecsTo(endTime) / 1000;
-    timerLabel->setText("Time to rest" + getTimerString(secs));
+    timerLabel->setText("Time to rest: " + getTimerString(secs));
 }
