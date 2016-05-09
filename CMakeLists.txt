@@ -5,6 +5,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
+if ( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
+    SET(Qt5_DIR ${TOOLCHAIN_INCLUDE_PREFIX}/qt5/lib/cmake/Qt5)
+endif()
+
 find_package(Qt5 COMPONENTS Core Network Widgets Test)
 
 set(SOURCE_FILES main.cpp
@@ -21,7 +25,7 @@ set(RESOURCES Resources/resources.qrc)
 qt5_add_resources(RESOURCES_RCC ${RESOURCES})
 add_executable(mEyeSaver ${SOURCE_FILES} ${RESOURCES_RCC})
 
-target_include_directories(mEyeSaver PUBLIC /usr/include/qt5)
+target_include_directories(mEyeSaver PUBLIC ${TOOLCHAIN_INCLUDE_PREFIX}/qt5/${TOOLCHAIN_INCLUDE_SUFFIX})
 target_link_libraries(mEyeSaver Qt5::Widgets)
 
 # Testing.
@@ -35,4 +39,24 @@ add_executable(tests
 )
 add_test(tests tests)
 
+target_include_directories(tests PUBLIC ${TOOLCHAIN_INCLUDE_PREFIX}/qt5/${TOOLCHAIN_INCLUDE_SUFFIX})
 target_link_libraries(tests Qt5::Test Qt5::Widgets)
+
+# Installing.
+if ( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
+    set(RUNTIME_DESTINATION ${CMAKE_INSTALL_PREFIX})
+else()
+    set(RUNTIME_DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+endif()
+
+install(TARGETS mEyeSaver
+        RUNTIME DESTINATION ${RUNTIME_DESTINATION}
+)
+
+if ( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
+    if ( ${REGEXP} )
+        install(CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/create_windows_bundle.sh -e ${CMAKE_INSTALL_PREFIX}/mEyeSaver.exe -d ${CMAKE_INSTALL_PREFIX} -t ${CMAKE_FIND_ROOT_PATH} -r ${REGEXP})")
+    else()
+        install(CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/create_windows_bundle.sh -e ${CMAKE_INSTALL_PREFIX}/mEyeSaver.exe -d ${CMAKE_INSTALL_PREFIX} -t ${CMAKE_FIND_ROOT_PATH})")
+    endif()
+endif()
