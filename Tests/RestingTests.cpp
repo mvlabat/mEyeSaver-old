@@ -4,7 +4,7 @@
 
 #include "RestingTests.h"
 
-QString TestRestDialog::getTimerStringTest(quint64 secs)
+QString TestRestDialog::getTimerStringTest(qint64 secs)
 {
     return getTimerString(secs);
 }
@@ -17,8 +17,11 @@ void TestTimerController::initWorking()
 void RestingTests::getTimerStringTest() {
     TestRestDialog testRestDialog;
     QCOMPARE(testRestDialog.getTimerStringTest(32), QString("00:00:32"));
+    QCOMPARE(testRestDialog.getTimerStringTest(-32), QString("00:00:32"));
     QCOMPARE(testRestDialog.getTimerStringTest(3550), QString("00:59:10"));
+    QCOMPARE(testRestDialog.getTimerStringTest(-3550), QString("00:59:10"));
     QCOMPARE(testRestDialog.getTimerStringTest(39550), QString("10:59:10"));
+    QCOMPARE(testRestDialog.getTimerStringTest(-39550), QString("10:59:10"));
 }
 
 void RestingTests::testTimerScenario1()

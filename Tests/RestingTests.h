@@ -15,7 +15,7 @@ class TestRestDialog : public RestDialog
 {
 public:
     TestRestDialog() {}
-    QString getTimerStringTest(quint64 secs);
+    QString getTimerStringTest(qint64 secs);
 };
 
 class TestTimerSettings : public TimerSettings {
