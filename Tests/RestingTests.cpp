@@ -1,7 +1,3 @@
-//
-// Created by mvlabat on 4/14/16.
-//
-
 #include "RestingTests.h"
 
 QString TestRestDialog::getTimerStringTest(qint64 secs)

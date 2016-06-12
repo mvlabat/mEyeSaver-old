@@ -6,7 +6,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
 if ( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
-    SET(Qt5_DIR ${TOOLCHAIN_INCLUDE_PREFIX}/qt5/lib/cmake/Qt5)
+    set(Qt5_DIR ${TOOLCHAIN_INCLUDE_PREFIX}/qt5/lib/cmake/Qt5)
 endif()
 
 find_package(Qt5 COMPONENTS Core Network Widgets Test)
@@ -54,9 +54,6 @@ install(TARGETS mEyeSaver
 )
 
 if ( ${CMAKE_SYSTEM_NAME} STREQUAL "Windows" )
-    if ( ${REGEXP} )
-        install(CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/create_windows_bundle.sh -e ${CMAKE_INSTALL_PREFIX}/mEyeSaver.exe -d ${CMAKE_INSTALL_PREFIX} -t ${CMAKE_FIND_ROOT_PATH} -r ${REGEXP})")
-    else()
-        install(CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/create_windows_bundle.sh -e ${CMAKE_INSTALL_PREFIX}/mEyeSaver.exe -d ${CMAKE_INSTALL_PREFIX} -t ${CMAKE_FIND_ROOT_PATH})")
-    endif()
+    set(REGEXPOR .*\(libpcre16-0\\\\.dll|libpng16-16\\\\.dll\))
+    install(CODE "execute_process(COMMAND ${CMAKE_SOURCE_DIR}/create_windows_bundle.sh -e ${CMAKE_INSTALL_PREFIX}/mEyeSaver.exe -d ${CMAKE_INSTALL_PREFIX} -t ${CMAKE_FIND_ROOT_PATH} -o \"${REGEXPOR}\")")
 endif()

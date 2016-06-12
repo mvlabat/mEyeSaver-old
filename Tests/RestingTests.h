@@ -1,7 +1,3 @@
-//
-// Created by mvlabat on 4/14/16.
-//
-
 #ifndef MEYESAVER_TEST_H
 #define MEYESAVER_TEST_H
 
